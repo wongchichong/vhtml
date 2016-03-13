@@ -7,6 +7,7 @@
 
 > Need to use HTML strings (angular?) but want to use JSX? vhtml's got your back.
 
+[**JSFiddle Demo**](https://jsfiddle.net/developit/9q0vyskg/)
 
 ---
 
