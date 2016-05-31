@@ -6,6 +6,8 @@
 ### **Render JSX/Hyperscript to HTML strings, without VDOM**
 
 > Need to use HTML strings (angular?) but want to use JSX? vhtml's got your back.
+>
+> Building components? do yourself a favor and use [<img title="Preact" alt="Preact" src="https://cdn.rawgit.com/developit/b4416d5c92b743dbaec1e68bc4c27cda/raw/8dd78c9d138f13e3fec98cbdd6d1c619cf986ee0/preact-logo-trans.svg" height="24" align="top">](https://github.com/developit/preact)
 
 [**JSFiddle Demo**](https://jsfiddle.net/developit/9q0vyskg/)
 
