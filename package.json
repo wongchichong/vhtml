@@ -17,9 +17,8 @@
   },
   "babel": {
     "presets": [
-      "es2015-minimal",
-      "stage-0",
-      "react"
+      "es2015",
+      "stage-0"
     ],
     "plugins": [
       "transform-object-rest-spread",
@@ -31,6 +30,10 @@
       ]
     ]
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "keywords": [
     "hyperscript",
     "html",
@@ -49,23 +52,22 @@
   "homepage": "https://github.com/developit/vhtml",
   "devDependencies": {
     "babel-core": "^6.6.4",
-    "babel-eslint": "^5.0.0",
+    "babel-eslint": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.4",
     "babel-plugin-transform-react-jsx": "^6.6.5",
-    "babel-preset-es2015-minimal": "^1.1.0",
-    "babel-preset-es2015-minimal-rollup": "^1.1.0",
-    "babel-preset-react": "^6.5.0",
+    "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
-    "eslint": "~2.2.0",
+    "eslint": "^3.1.0",
     "gzip-size-cli": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^2.4.5",
-    "npm-run-all": "^1.5.1",
+    "mocha": "^3.1.2",
+    "npm-run-all": "^2.3.0",
     "pretty-bytes-cli": "^1.0.0",
-    "rollup": "^0.25.4",
+    "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-es3": "^1.0.3",
     "uglify-js": "^2.6.2"
   }
 }
