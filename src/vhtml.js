@@ -2,24 +2,31 @@
 let esc = str => String(str).replace(/[&<>"']/g, s=>`&${map[s]};`);
 let map = {'&':'amp','<':'lt','>':'gt','"':'quot',"'":'apos'};
 
-// sanitize text children and filter out falsey values
-let child = s => truthy(s) ? (sanitized[s]===true ? s : esc(s)) : '';
-
-// check that a value is not false, undefined or null
-let truthy = v => v!==false && v!=null;
-
 let sanitized = {};
 
 /** Hyperscript reviver that constructs a sanitized HTML string. */
-export default function h(name, attrs, ...children) {
+export default function h(name, attrs) {
 	let s = `<${name}`;
 	if (attrs) for (let i in attrs) {
-		if (attrs.hasOwnProperty(i) && truthy(attrs[i])) {
+		if (attrs[i]!==false && attrs[i]!=null) {
 			s += ` ${esc(i)}="${esc(attrs[i])}"`;
 		}
 	}
-	s += `>${[].concat(...children).map(child).join('')}</${name}>`;
-	sanitized[s] = true;
+	s += '>';
+	let stack=[];
+	for (let i=arguments.length; i-- > 2; ) stack.push(arguments[i]);
+	while (stack.length) {
+		let child = stack.pop();
+		if (child) {
+			if (child.pop) {
+				for (let i=child.length; i--; ) stack.push(child[i]);
+			}
+			else {
+				s += sanitized[child]===true ? child : esc(child);
+			}
+		}
+	}
+	sanitized[s += `</${name}>`] = true;
 	return s;
 }
 

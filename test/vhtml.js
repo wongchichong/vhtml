@@ -39,4 +39,16 @@ describe('vhtml', () => {
 			`<div onclick="&amp;&lt;&gt;&quot;&apos;"></div>`
 		);
 	});
+
+	it('should flatten children', () => {
+		expect(
+			<div>
+				{[['a','b']]}
+				<c>d</c>
+				{['e',['f'],[['g']]]}
+			</div>
+		).to.equal(
+			`<div>ab<c>d</c>efg</div>`
+		);
+	});
 });
