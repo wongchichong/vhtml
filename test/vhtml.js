@@ -51,4 +51,30 @@ describe('vhtml', () => {
 			`<div>ab<c>d</c>efg</div>`
 		);
 	});
+
+	it('should support sortof components', () => {
+		let items = ['one', 'two'];
+
+		const Item = ({ item, index, children }) => (
+			<li id={index}>
+				<h4>{item}</h4>
+				{children}
+			</li>
+		);
+
+		expect(
+			<div class="foo">
+				<h1>Hi!</h1>
+				<ul>
+					{ items.map( (item, index) => (
+						<Item {...{ item, index }}>
+							This is item {item}!
+						</Item>
+					)) }
+				</ul>
+			</div>
+		).to.equal(
+			`<div class="foo"><h1>Hi!</h1><ul><li id="0"><h4>one</h4>This is item one!</li><li id="1"><h4>two</h4>This is item two!</li></ul></div>`
+		);
+	});
 });
