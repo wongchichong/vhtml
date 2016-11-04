@@ -48,3 +48,56 @@ document.body.innerHTML = (
   </div>
 );
 ```
+
+
+### New: "Sortof" Components!
+
+`vhtml` intentionally does not transform JSX to a Virtual DOM, instead serializing it directly to HTML.
+However, it's still possible to make use of basic Pure Functional Components as a sort of "template partial".
+
+When `vhtml` is given a Function as the JSX tag name, it will invoke that function and pass it `{ children, ...props }`.
+This is the same signature as a Pure Functional Component in react/preact, except `children` is an Array of already-serialized HTML strings.
+
+This actually means it's possible to build compositional template modifiers with these simple Components, or even higher-order components.
+
+Here's a more complex version of the previous example that uses a component to encapsulate iteration items:
+
+```js
+let items = ['one', 'two'];
+
+const Item = ({ item, index, children }) => (
+  <li id={index}>
+    <h4>{item}</h4>
+    {children}
+  </li>
+);
+
+console.log(
+  <div class="foo">
+    <h1>Hi!</h1>
+    <ul>
+      { items.map( (item, index) => (
+        <Item {...{ item, index }}>
+          This is item {item}!
+        </Item>
+      )) }
+    </ul>
+  </div>
+);
+```
+
+The above outputs the following HTML:
+
+```html
+<div class="foo">
+  <h1>Hi!</h1>
+  <ul>
+    <li id="0">
+      <h4>one</h4>This is item one!
+    </li>
+    <li id="1">
+      <h4>two</h4>This is item two!
+    </li>
+  </ul>
+</div>
+```
