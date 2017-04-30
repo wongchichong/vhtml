@@ -158,11 +158,11 @@ describe('vhtml', () => {
 		);
 	});
 
-	it('should handle className as class', () => {
+	it('should handle special prop names', () => {
 		expect(
-			<div className="my-class" />
+			<div className="my-class" htmlFor="id" />
 		).to.equal(
-			'<div class="my-class"></div>'
+			'<div class="my-class" for="id"></div>'
 		);
 	});
 });

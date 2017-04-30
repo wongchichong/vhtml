@@ -3,6 +3,10 @@ import emptyTags from './empty-tags';
 // escape an attribute
 let esc = str => String(str).replace(/[&<>"']/g, s=>`&${map[s]};`);
 let map = {'&':'amp','<':'lt','>':'gt','"':'quot',"'":'apos'};
+let DOMAttributeNames = {
+	className: 'class',
+	htmlFor: 'for'
+};
 
 let sanitized = {};
 
@@ -23,7 +27,7 @@ export default function h(name, attrs) {
 	let s = `<${name}`;
 	if (attrs) for (let i in attrs) {
 		if (attrs[i]!==false && attrs[i]!=null) {
-			s += ` ${i === 'className' ? 'class' : esc(i)}="${esc(attrs[i])}"`;
+			s += ` ${DOMAttributeNames[i] ? DOMAttributeNames[i] : esc(i)}="${esc(attrs[i])}"`;
 		}
 	}
 
