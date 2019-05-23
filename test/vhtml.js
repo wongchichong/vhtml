@@ -173,4 +173,21 @@ describe('vhtml', () => {
 			'<div class="my-class" for="id"></div>'
 		);
 	});
+
+	it('should support string fragments', () => {
+		expect(
+			h(null, null, "foo", "bar", "baz")
+		).to.equal(
+			'foobarbaz'
+		);
+	});
+
+	it('should support element fragments', () => {
+		expect(
+			h(null, null, <p>foo</p>, <em>bar</em>, <div class="qqqqqq">baz</div>)
+		).to.equal(
+			'<p>foo</p><em>bar</em><div class="qqqqqq">baz</div>'
+		);
+	});
+
 });
