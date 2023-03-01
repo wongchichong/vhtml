@@ -195,34 +195,21 @@ describe('vhtml', () => {
 		)
 	})
 
-	it('should support sortof components without args but with children', () => {
-		let items = ['one', 'two']
-
-		const Item = ({ children }) => (
-			<li>
-				<h4></h4>
-				{children}
-			</li>
-		)
-
+	it('should support svg', () => {
 		expect(
-			< !--comments -->
-		<div class="foo">
-			<h1>Hi!</h1>
-			<ul>
-				{items.map((item, index) => (
-					<Item>
-						This is item {item}!
-					</Item>
-				))}
-			</ul>
-		</div>
+			<svg viewBox="0 0 100 100">
+				<g transform="translate(50, 50)">
+					<circle class="clock-face" r={48} />
+					<line class="millisecond" y2={-44} />
+					<line class="hour" y2={-22} />
+					<line class="minute" y2={-32} />
+					<line class="second" y2={-38} />
+				</g>
+			</svg>
 		).to.equal(
-			`<div class="foo"><h1>Hi!</h1><ul><li><h4></h4>This is item one!</li><li><h4></h4>This is item two!</li></ul></div>`
+			`<svg viewBox="0 0 100 100"><g transform="translate(50, 50)"><circle class="clock-face" r="48"></circle><line class="millisecond" y2="-44"></line><line class="hour" y2="-22"></line><line class="minute" y2="-32"></line><line class="second" y2="-38"></line></g></svg>`
 		)
 	})
-
-
 	it('should support empty comment', () => {
 		expect(
 			h('!', null)
