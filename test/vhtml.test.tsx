@@ -210,6 +210,15 @@ describe('vhtml', () => {
 			`<svg viewBox="0 0 100 100"><g transform="translate(50, 50)"><circle class="clock-face" r="48"></circle><line class="millisecond" y2="-44"></line><line class="hour" y2="-22"></line><line class="minute" y2="-32"></line><line class="second" y2="-38"></line></g></svg>`
 		)
 	})
+
+	it('should support text', () => {
+		expect(
+			h('text', null, "hello world!")
+		).to.equal(
+			`hello world!`
+		)
+	})
+
 	it('should support empty comment', () => {
 		expect(
 			h('!', null)
