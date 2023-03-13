@@ -45,6 +45,14 @@ describe('vhtml', () => {
 		)
 	})
 
+	// it('should sanitize function', () => {
+	// 	expect(
+	// 		<div onClick={() => alert('hello')} />
+	// 	).to.equal(
+	// 		`<div onclick="&amp;&lt;&gt;&quot;&apos;"></div>`
+	// 	)
+	// })
+
 	it('should not sanitize the "dangerouslySetInnerHTML" attribute, and directly set its `__html` property as innerHTML', () => {
 		expect(
 			<div dangerouslySetInnerHTML={{ __html: "<span>Injected HTML</span>" }} />

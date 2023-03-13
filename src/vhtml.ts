@@ -26,32 +26,26 @@ export default function h(name: string | Function | null, attrs: any, ..._args: 
 		// return name(attrs, stack.reverse());
 	}
 
+	const loopAttr = () => {
+		if (attrs) for (let i in attrs) {
+			if (attrs[i] !== false && attrs[i] != null && i !== setInnerHTMLAttr) {
+				//@ts-ignore
+				s += ` ${DOMAttributeNames[i] ? DOMAttributeNames[i] : esc(i)}="${esc(attrs[i])}"`
+			}
+		}
+	}
+
 	if (name) {
 		if (name === '!') {
 			s += '<!-- '
-			if (attrs) for (let i in attrs) {
-				if (attrs[i] !== false && attrs[i] != null && i !== setInnerHTMLAttr) {
-					//@ts-ignore
-					s += ` ${DOMAttributeNames[i] ? DOMAttributeNames[i] : esc(i)}="${esc(attrs[i])}"`
-				}
-			}
+			loopAttr()
 		}
 		else if (name === 'text') {
-			if (attrs) for (let i in attrs) {
-				if (attrs[i] !== false && attrs[i] != null && i !== setInnerHTMLAttr) {
-					//@ts-ignore
-					s += ` ${DOMAttributeNames[i] ? DOMAttributeNames[i] : esc(i)}="${esc(attrs[i])}"`
-				}
-			}
+			loopAttr()
 		}
 		else {
 			s += '<' + name
-			if (attrs) for (let i in attrs) {
-				if (attrs[i] !== false && attrs[i] != null && i !== setInnerHTMLAttr) {
-					//@ts-ignore
-					s += ` ${DOMAttributeNames[i] ? DOMAttributeNames[i] : esc(i)}="${esc(attrs[i])}"`
-				}
-			}
+			loopAttr()
 			s += '>'
 		}
 	}

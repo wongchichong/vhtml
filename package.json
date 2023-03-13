@@ -3,9 +3,9 @@
   "amdName": "vhtml",
   "version": "2.2.1",
   "description": "Hyperscript reviver that constructs a sanitized HTML string.",
-  "main": "dist/vhtml.js",
-  "minified:main": "dist/vhtml.min.js",
-  "jsnext:main": "src/vhtml.js",
+  "main": "./dist/vhtml.js",
+  "minified:main": "./dist/vhtml.umd.js",
+  "jsnext:main": "./src/vhtml.ts",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "vite build && tsc --declaration && pnpm size",
