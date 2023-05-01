@@ -1,54 +1,58 @@
 {
-  "name": "vhtml",
-  "amdName": "vhtml",
-  "version": "2.2.1",
-  "description": "Hyperscript reviver that constructs a sanitized HTML string.",
-  "main": "./dist/vhtml.js",
-  "minified:main": "./dist/vhtml.umd.js",
-  "jsnext:main": "./src/vhtml.ts",
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "vite build && tsc --declaration && pnpm size",
-    "tsc": "tsc",
-    "size": "echo \"gzip size: $(gzip-size $npm_package_minified_main | pretty-bytes)\"",
-    "test": "mocha --require esbuild-register test/**/*.ts*",
-    "prepublish": "pnpm build && pnpm test",
-    "release": "npm run -s build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
-  },
-  "files": [
-    "src",
-    "dist"
-  ],
-  "keywords": [
-    "hyperscript",
-    "html",
-    "renderer",
-    "strings"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/developit/vhtml.git"
-  },
-  "author": "Jason Miller <jason@developit.ca>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/developit/vhtml/issues"
-  },
-  "homepage": "https://github.com/developit/vhtml",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "esbuild-register": "^3.4.2",
-    "eslint": "^3.1.0",
-    "gzip-size-cli": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "mocha": "^3.5.3",
-    "npm-run-all": "^2.3.0",
-    "pretty-bytes-cli": "^1.0.0",
-    "uglify-js": "^2.6.2",
-    "vite": "^4.1.4"
-  },
-  "dependencies": {
-    "@types/mocha": "^10.0.1",
-    "@types/react": "^18.0.28"
-  }
+    "name": "vhtml",
+    "amdName": "vhtml",
+    "version": "2.2.1",
+    "description": "Hyperscript reviver that constructs a sanitized HTML string.",
+    "main": "./dist/vhtml.cjs.js",
+    "module": "./dist/vhtml.es.js",
+    "browser": "./dist/vhtml.umd.js",
+    "types": "./types/vhtml.d.ts",
+    "minified:main": "./dist/vhtml.umd.js",
+    "jsnext:main": "./src/vhtml.ts",
+    "scripts": {
+        "release1": "git add . && git commit -m \"Bump version\" git push && pnpm version patch",
+        "preinstall": "npx only-allow pnpm",
+        "build": "vite build && tsc --declaration && pnpm size",
+        "tsc": "tsc",
+        "size": "echo \"gzip size: $(gzip-size $npm_package_minified_main | pretty-bytes)\"",
+        "test": "mocha --require esbuild-register test/**/*.ts*",
+        "prepublish": "pnpm build && pnpm test",
+        "release": "npm run -s build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+    },
+    "files": [
+        "src",
+        "dist"
+    ],
+    "keywords": [
+        "hyperscript",
+        "html",
+        "renderer",
+        "strings"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/developit/vhtml.git"
+    },
+    "author": "Jason Miller <jason@developit.ca>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/developit/vhtml/issues"
+    },
+    "homepage": "https://github.com/developit/vhtml",
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "esbuild-register": "^3.4.2",
+        "eslint": "^3.19.0",
+        "gzip-size-cli": "^1.0.0",
+        "mkdirp": "^0.5.1",
+        "mocha": "^3.5.3",
+        "npm-run-all": "^2.3.0",
+        "pretty-bytes-cli": "^1.0.0",
+        "uglify-js": "^2.6.2",
+        "vite": "^4.3.3",
+        "vite-plugin-clean": "^1.0.0"
+    },
+    "dependencies": {
+        "@types/mocha": "^10.0.1"
+    }
 }

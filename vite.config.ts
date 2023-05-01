@@ -3,6 +3,7 @@
 
 import { defineConfig } from 'vite'
 
+
 /* MAIN */
 
 const config = defineConfig({
@@ -11,8 +12,9 @@ const config = defineConfig({
 		// minify: false,
 		lib: {
 			name: 'vhtml',
-			formats: ['umd', 'es'],
-			entry: "./src/vhtml.ts"
+			formats: ['cjs', 'es', 'umd'],
+			entry: "./src/vhtml.ts",
+			fileName: (format: string, entryName: string) => `${entryName}.${format}.js`
 		},
 	},
 	esbuild: {
