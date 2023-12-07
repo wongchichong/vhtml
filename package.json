@@ -41,19 +41,18 @@
     "homepage": "https://github.com/developit/vhtml",
     "devDependencies": {
         "chai": "^3.5.0",
-        "esbuild-register": "^3.4.2",
+        "esbuild-register": "^3.5.0",
         "eslint": "^3.19.0",
         "gzip-size-cli": "^1.0.0",
-        "mkdirp": "^0.5.1",
         "mocha": "^3.5.3",
         "npm-run-all": "^2.3.0",
         "pretty-bytes-cli": "^1.0.0",
         "uglify-js": "^2.6.2",
-        "vite": "^4.3.3",
+        "vite": "^4.4.11",
         "vite-plugin-clean": "^1.0.0"
     },
     "dependencies": {
-        "@types/mocha": "^10.0.1",
-        "pnpm": "^8.3.1"
+        "@types/mocha": "^10.0.2",
+        "pnpm": "^8.8.0"
     }
 }
