@@ -53,7 +53,7 @@
     },
     "dependencies": {
         "@types/mocha": "^10.0.2",
-        "pnpm": "^8.8.0",
-        "typescript": "5.4.4"
+        "pnpm": "^8.15.7",
+        "typescript": "5.4.5"
     }
 }
